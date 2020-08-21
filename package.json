@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "scripts": {
+    "prod": "gulp --production",
+    "dev": "gulp watch"
+  },
+  "devDependencies": {
+    "bootstrap-sass": "^3.0.0",
+    "gulp": "^3.9.1",
+    "laravel-elixir": "^5.0.0"
+  },
+  "dependencies": {
+    "@mapbox/maki": "^6.2.0",
+    "download-file": "~0.1.5",
+    "path": "~0.12.7"
+  }
+}
