@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Exception;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -1004,6 +1005,8 @@ class geoportailController extends Controller
     public function addCountVieuwData(Request $Requests)
     {
 
+
+
         try {
 
             DB::select('BEGIN;');
@@ -1014,11 +1017,13 @@ class geoportailController extends Controller
             $sous = $Requests->input('sous', null);
             $id_couche = $Requests->input('id_couche', null);
 
+
             if ($type == "thematiques") {
                 if ($sous) {
                     $count = DB::table('couche-sous-thematique')->select('vues')
                         ->where('id', $id_couche)
                         ->get();
+
 
                     if ($count[0]->vues == null) {
                         $new_count = 1;
@@ -1033,6 +1038,8 @@ class geoportailController extends Controller
                     $count = DB::table('couche-thematique')->select('vues')
                         ->where('id', $id_couche)
                         ->get();
+
+
 
                     if ($count[0]->vues == null) {
                         $new_count = 1;
@@ -1063,6 +1070,8 @@ class geoportailController extends Controller
                     $count = DB::table('couche-cartes')->select('vues')
                         ->where('id', $id_couche)
                         ->get();
+
+
 
                     if ($count[0]->vues == null) {
                         $new_count = 1;
@@ -1183,5 +1192,143 @@ class geoportailController extends Controller
         $response['nom_title'] = $nom_title;
         $response['data'] = $querry[0];
         return $response;
+    }
+
+    public function analytics(Request $request)
+    {
+        $url = "https://analytics.geo.sm/api_v1/store/";
+        $client = new Client();
+
+        $details = json_decode(file_get_contents("http://www.geoplugin.net/json.gp"), true);
+        echo $details["geoplugin_countryName"];
+
+        $country = $details["geoplugin_countryName"];
+
+        $type = $request->input("type", null);
+        $nom_thematique = $request->input("nom_thematique", null);
+        $nom_sous_thematique = $request->input("nom_sous_thematique", null);
+        $bibliotheque = $request->input("bibliotheque", null);
+        $nom_sous_carte = $request->input("nom_sous_carte", null);
+        $nom_fond_carte = $request->input("nom_fond_carte", null);
+        $keyword = $request->input("keyword", null);
+        $draw_name = $request->input("draw_name", null);
+
+        if ($type == "thematique") {
+            $data = array(
+                'timestamp' => time(),
+                'thematic_name' => $nom_thematique,
+                'country' => $country
+            );
+
+            $response = $client->post($url + "thematics", [
+                'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
+                'body'    => json_encode($data)
+            ]);
+
+            print_r(json_decode($response->getBody(), true));
+        } else if ($type == "sous_thematique") {
+            $data = array(
+                'timestamp' => time(),
+                'under_thematic_name' => $nom_sous_thematique,
+                'country' => $country
+            );
+
+            $response = $client->post($url + "under_thematics", [
+                'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
+                'body'    => json_encode($data)
+            ]);
+
+            print_r(json_decode($response->getBody(), true));
+        } else if ($type == "libraries") {
+            $data = array(
+                'timestamp' => time(),
+                'library_name' => $bibliotheque,
+                'country' => $country
+            );
+
+            $response = $client->post($url + "libraries", [
+                'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
+                'body'    => json_encode($data)
+            ]);
+
+            print_r(json_decode($response->getBody(), true));
+        } else if ($type == "sous_carte") {
+            $data = array(
+                'timestamp' => time(),
+                'map_name' => $nom_sous_carte,
+                'country' => $country
+            );
+
+            $response = $client->post($url + "map_under_lib", [
+                'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
+                'body'    => json_encode($data)
+            ]);
+
+            print_r(json_decode($response->getBody(), true));
+        } else if ($type == "fond_carte") {
+            $data = array(
+                'timestamp' => time(),
+                'base_map_name' => $nom_fond_carte,
+                'country' => $country
+            );
+
+            $response = $client->post($url + "basemap", [
+                'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
+                'body'    => json_encode($data)
+            ]);
+
+            print_r(json_decode($response->getBody(), true));
+        } else if ($type == "search") {
+            $data = array(
+                'timestamp' => time(),
+                'keyword' => $keyword,
+                'country' => $country
+            );
+
+            $response = $client->post($url + "searchbar", [
+                'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
+                'body'    => json_encode($data)
+            ]);
+
+            print_r(json_decode($response->getBody(), true));
+        } else if ($type == "draw") {
+            $data = array(
+                'timestamp' => time(),
+                'draw_tool_name' => $draw_name,
+                'country' => $country
+            );
+
+            $response = $client->post($url + "draw_tool", [
+                'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
+                'body'    => json_encode($data)
+            ]);
+
+            print_r(json_decode($response->getBody(), true));
+        } else if ($type == "itineraire") {
+            $data = array(
+                'timestamp' => time(),
+                'country' => $country
+            );
+
+            $response = $client->post($url + "road_cal", [
+                'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
+                'body'    => json_encode($data)
+            ]);
+
+            print_r(json_decode($response->getBody(), true));
+        } else if ($type == "download") {
+            $data = array(
+                'timestamp' => time(),
+                'thematics' => $nom_thematique,
+                'country' => $country
+            );
+
+            $response = $client->post($url + "download_map", [
+                'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
+                'body'    => json_encode($data)
+            ]);
+
+            print_r(json_decode($response->getBody(), true));
+        }
     }
 }

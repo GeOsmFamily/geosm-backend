@@ -1,6 +1,7 @@
 var config_projet = {
-    rootApp: "/var/www/geocameroun_admin/",
-    urlNodejs: 'http://service.geocameroun.cm/importation/',
-    urlNodejs_backend: 'http://service.geocameroun.cm/',
-    projet_qgis_server: "occitanie"
+    "rootApp": "/var/www/GeoOSM_Backend/projet_laravel/",
+    "urlNodejs": "https://service.geosm.org/importation",
+    "urlNodejs_backend": "https://service.geosm.org/",
+    "urlBackend": "",
+    "projet_qgis_server": "cameroun"
 }
