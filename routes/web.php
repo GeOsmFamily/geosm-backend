@@ -68,15 +68,28 @@ Route::post('whriteMultipleSvg', 'adminController@whriteMultipleSvg');
 
 //API RESTFUL
 
-/*$api = app('Dingo\Api\Routing\Router');
+$api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', function ($api) {
-    $api->group(['middleware' => 'cors'], function ($api) {
+    $api->get('v1/RestFull/Catalog/', 'App\Http\Controllers\ApiController@DataCatalog');
 
-    });
-});*/
+    $api->get('v1/RestFull/rolles/{id}', 'App\Http\Controllers\ApiController@RollesLayers');
 
+    $api->get('v1/RestFull/datajson/{shema}/{exp}', 'App\Http\Controllers\ApiController@DataJson');
+    $api->get('v1/RestFull/DataJsonApi/{shema}/{exp}', 'App\Http\Controllers\ApiController@DataJsonApi');
 
+    $api->get('v1/RestFull/Catalog/aliase/{shema}/{exp}', 'App\Http\Controllers\ApiController@Catalog');
+
+    $api->get('v1/RestFull/LayerNameEdit/{id}', 'App\Http\Controllers\ApiController@LayerNameEdit');
+
+    $api->get('v1/RestFull/getUsers/', 'App\Http\Controllers\adminController@users');
+
+    $api->get('v1/RestFull/catalogAdmin/', 'App\Http\Controllers\adminController@DataCatalog');
+
+    $api->get('v1/RestFull/catalogAdminCartes/', 'App\Http\Controllers\adminController@DataCatalogCartes');
+
+    $api->get('v1/RestFull/column_name/{shema}/{table}', 'App\Http\Controllers\ApiController@column_name');
+});
 
 Route::group(['prefix' => '/user'], function () {
 
