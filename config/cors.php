@@ -15,15 +15,15 @@ return [
     |
     */
 
-    'paths' => ['*'],
+    'paths' => ['api/*'],
 
-    'allowed_methods' => ['*'],
+    'allowed_methods' => ['GET,POST'],
 
-    'allowed_origins' => ['*'],
+    'allowed_origins' => ['*.geo.sm'],
 
     'allowed_origins_patterns' => [],
 
-    'allowed_headers' => ['*'],
+    'allowed_headers' => ['Content-Type, Accept, Authorization, X-Requested-With, X-Auth-Token, Application', 'ip'],
 
     'exposed_headers' => [],
 
