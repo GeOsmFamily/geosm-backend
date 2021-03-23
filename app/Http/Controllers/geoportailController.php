@@ -1220,7 +1220,7 @@ class geoportailController extends Controller
                 'country' => $country
             );
 
-            $response = $client->post($url + "thematics", [
+            $response = $client->post($url . "thematics", [
                 'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
                 'body'    => json_encode($data)
             ]);
@@ -1233,7 +1233,7 @@ class geoportailController extends Controller
                 'country' => $country
             );
 
-            $response = $client->post($url + "under_thematics", [
+            $response = $client->post($url . "under_thematics", [
                 'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
                 'body'    => json_encode($data)
             ]);
@@ -1246,7 +1246,7 @@ class geoportailController extends Controller
                 'country' => $country
             );
 
-            $response = $client->post($url + "libraries", [
+            $response = $client->post($url . "libraries", [
                 'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
                 'body'    => json_encode($data)
             ]);
@@ -1259,7 +1259,7 @@ class geoportailController extends Controller
                 'country' => $country
             );
 
-            $response = $client->post($url + "map_under_lib", [
+            $response = $client->post($url . "map_under_lib", [
                 'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
                 'body'    => json_encode($data)
             ]);
@@ -1272,7 +1272,7 @@ class geoportailController extends Controller
                 'country' => $country
             );
 
-            $response = $client->post($url + "basemap", [
+            $response = $client->post($url . "basemap", [
                 'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
                 'body'    => json_encode($data)
             ]);
@@ -1285,7 +1285,7 @@ class geoportailController extends Controller
                 'country' => $country
             );
 
-            $response = $client->post($url + "searchbar", [
+            $response = $client->post($url . "searchbar", [
                 'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
                 'body'    => json_encode($data)
             ]);
@@ -1298,7 +1298,7 @@ class geoportailController extends Controller
                 'country' => $country
             );
 
-            $response = $client->post($url + "draw_tool", [
+            $response = $client->post($url . "draw_tool", [
                 'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
                 'body'    => json_encode($data)
             ]);
@@ -1310,7 +1310,7 @@ class geoportailController extends Controller
                 'country' => $country
             );
 
-            $response = $client->post($url + "road_cal", [
+            $response = $client->post($url . "road_cal", [
                 'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
                 'body'    => json_encode($data)
             ]);
@@ -1323,7 +1323,7 @@ class geoportailController extends Controller
                 'country' => $country
             );
 
-            $response = $client->post($url + "download_map", [
+            $response = $client->post($url . "download_map", [
                 'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
                 'body'    => json_encode($data)
             ]);
