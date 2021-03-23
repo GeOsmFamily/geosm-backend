@@ -1199,7 +1199,9 @@ class geoportailController extends Controller
         $url = "https://analytics.geo.sm/api_v1/store/";
         $client = new Client();
 
-        $details = json_decode(file_get_contents("http://www.geoplugin.net/json.gp"), true);
+        $ip = $request->input("ip", null);
+
+        $details = json_decode(file_get_contents("http://www.geoplugin.net/json.gp?ip=$ip"), true);
         echo $details["geoplugin_countryName"];
 
         $country = $details["geoplugin_countryName"];
@@ -1212,6 +1214,7 @@ class geoportailController extends Controller
         $nom_fond_carte = $request->input("nom_fond_carte", null);
         $keyword = $request->input("keyword", null);
         $draw_name = $request->input("draw_name", null);
+
 
         if ($type == "thematique") {
             $data = array(
