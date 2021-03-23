@@ -17,13 +17,13 @@ return [
 
     'paths' => ['api/*'],
 
-    'allowed_methods' => ['GET,POST'],
+    'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*.geo.sm'],
+    'allowed_origins' => ['*'],
 
     'allowed_origins_patterns' => [],
 
-    'allowed_headers' => ['Content-Type, Accept, Authorization, X-Requested-With, X-Auth-Token, Application', 'ip'],
+    'allowed_headers' => ['*'],
 
     'exposed_headers' => [],
 
