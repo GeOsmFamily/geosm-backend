@@ -1194,6 +1194,20 @@ class geoportailController extends Controller
         return $response;
     }
 
+    public function searchCouche(Request $Requests)
+    {
+        $word = $Requests->input('word', null);
+        $couches = DB::select('SELECT id, nom FROM public."couche-sous-thematique" where strpos(unaccent(lower(nom)),unaccent(lower(\'' . $word . '\')))>0
+    union all
+    SELECT id, nom FROM public."couche-thematique" where strpos(unaccent(lower(nom)),unaccent(lower(\'' . $word . '\')))>0');
+
+        $cartes = DB::select('SELECT id, nom FROM public."couche-sous-cartes" where strpos(unaccent(lower(nom)),unaccent(lower(\'' . $word . '\')))>0
+    union all
+    SELECT id, nom FROM public."couche-cartes" where strpos(unaccent(lower(nom)),unaccent(lower(\'' . $word . '\')))>0');
+
+        return ["couches" => $couches, "cartes" => $cartes];
+    }
+
     public function analytics(Request $request)
     {
         $url = "https://analytics.geo.sm/api_v1/store/";
