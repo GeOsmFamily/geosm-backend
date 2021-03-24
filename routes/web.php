@@ -35,7 +35,7 @@ Route::post('login', ['as' => 'login', 'uses' => 'loginController@checklogin']);
 
 Route::post('updateAttribute', ['as' => 'updateAttribute', 'uses' => 'geoportailController@updateAttribute']);
 
-Route::post('addEntite', ['as' => 'addEntite', 'uses' => 'geoportailController@addEntite']);
+// Route::post('addEntite', ['as' => 'addEntite', 'uses' => 'geoportailController@addEntite']);
 
 Route::post('deleteEntite', ['as' => 'deleteEntite', 'uses' => 'geoportailController@deleteEntite']);
 
@@ -64,6 +64,8 @@ Route::get('config_bd_projet', 'adminController@config_bd_projet');
 
 Route::post('whriteSvg', 'adminController@whriteSvg');
 Route::post('whriteMultipleSvg', 'adminController@whriteMultipleSvg');
+
+Route::post('addEntite', 'geoportailController@addEntite');
 
 
 
