@@ -1073,8 +1073,8 @@ app.controller('mainCtrl', function ($location, $scope, $uibModal, myfactory, $r
                                     }
 
                                     //if (extension.toLowerCase() != 'geojson' && extension.toLowerCase() != 'json') {
-                                    console.log($scope.urlNodejs + extension + $scope.rootApp + 'public/assets/admin/uploadcouche/' + $scope.donne_en_importation.nom)
-                                    myfactory.get_data($scope.urlNodejs + extension + $scope.rootApp + 'public/assets/admin/uploadcouche/' + $scope.donne_en_importation.nom).then(
+                                    console.log($scope.urlBackend + '/assets/admin/uploadcouche/' + $scope.donne_en_importation.nom)
+                                    myfactory.get_data($scope.urlBackend + '/assets/admin/uploadcouche/' + $scope.donne_en_importation.nom).then(
                                         function (data) {
                                             if (data.features.length > 0) {
 
