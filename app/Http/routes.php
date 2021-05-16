@@ -1,5 +1,17 @@
 <?php
 
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
 Route::post('loginAdmin', ['as' => 'loginAdmin', 'uses' => 'loginController@loginAdmin']);
 
 // Route::get('/','geoportailController@index');
@@ -9,9 +21,12 @@ Route::get('/check', 'geoportailController@checkaccount');
 
 Route::get('deconnect', 'loginController@deconnect');
 
+
 Route::get('/', function () {
 	return view('admin');
 });
+
+Route::get('config_bd_projet', 'adminController@config_bd_projet');
 
 /*-------------------geoportail---------------------*/
 /*-------------------------------------------------------------------*/
@@ -19,7 +34,7 @@ Route::post('login', ['as' => 'login', 'uses' => 'loginController@checklogin']);
 
 Route::post('updateAttribute', ['as' => 'updateAttribute', 'uses' => 'geoportailController@updateAttribute']);
 
-Route::post('addEntite', ['as' => 'addEntite', 'uses' => 'geoportailController@addEntite']);
+// Route::post('addEntite', ['as' => 'addEntite', 'uses' => 'geoportailController@addEntite']);
 
 Route::post('deleteEntite', ['as' => 'deleteEntite', 'uses' => 'geoportailController@deleteEntite']);
 
@@ -34,6 +49,7 @@ Route::post('getLimite', 'geoportailController@getLimite');
 Route::post('getListLimit', 'geoportailController@getListLimit');
 Route::post('getLimitById', 'geoportailController@getLimitById');
 
+Route::post('searchCouche', 'geoportailController@searchCouche');
 Route::post('searchLimite', 'geoportailController@searchLimite');
 Route::post('searchLimiteInTable', 'geoportailController@searchLimiteInTable');
 Route::post('getLimiteById', 'geoportailController@getLimiteById');
@@ -48,13 +64,15 @@ Route::get('config_bd_projet', 'adminController@config_bd_projet');
 Route::post('whriteSvg', 'adminController@whriteSvg');
 Route::post('whriteMultipleSvg', 'adminController@whriteMultipleSvg');
 
-/*-------------------Web Services RESTFULL API V1---------------------*/
-/*-------------------------------------------------------------------*/
+Route::post('addEntite', 'geoportailController@addEntite');
+
+
+
+//API RESTFUL
 
 $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', function ($api) {
-
 	$api->get('v1/RestFull/Catalog/', 'App\Http\Controllers\ApiController@DataCatalog');
 
 	$api->get('v1/RestFull/rolles/{id}', 'App\Http\Controllers\ApiController@RollesLayers');
@@ -74,8 +92,6 @@ $api->version('v1', function ($api) {
 
 	$api->get('v1/RestFull/column_name/{shema}/{table}', 'App\Http\Controllers\ApiController@column_name');
 });
-
-
 
 Route::group(['prefix' => '/user'], function () {
 
@@ -211,8 +227,8 @@ Route::post('/geoportail/getUsers', 'geoportailController@getUsers');
 Route::post('/geoportail/getJsonFIle', 'geoportailController@getJsonFIle');
 
 Route::post('/geoportail/addCountVieuwData', 'geoportailController@addCountVieuwData');
+Route::post('/analytics', 'geoportailController@analytics');
 Route::get('/geoportail/getVisitiors', 'geoportailController@getVisitiors');
-Route::get('/geoportail/getVisitiorsLiban', 'geoportailController@getVisitiorsLiban');
 Route::post('/geoportail/getFeatureFromLayerById', 'geoportailController@getFeatureFromLayerById');
 
 Route::get('/geoportail/getAllExtents', 'adminController@getAllExtents');

@@ -3,49 +3,50 @@
 <base href="../../">
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <title>Admin GeoCameroun</title>
-  <!-- Bootstrap Core CSS -->
+    <meta charset="utf-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Admin GeOsm</title>
+    <link rel="icon" type="image/x-icon" href="cauris.png">
+    <!-- Bootstrap Core CSS -->
 
-  <link href="assets/admin/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/admin/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Menu CSS -->
-  <link href="assets/admin/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet">
-  <!-- toast CSS -->
-  <link href="assets/admin/bower_components/toast-master/css/jquery.toast.css" rel="stylesheet">
-  <!-- morris CSS -->
-  <link href="assets/admin/bower_components/morrisjs/morris.css" rel="stylesheet">
-  <!-- animation CSS -->
-  <link href="assets/admin/css/animate.css" rel="stylesheet">
-  <!-- Custom CSS -->
-  <link href="assets/admin/css/utilisateur.css" rel="stylesheet">
+    <!-- Menu CSS -->
+    <link href="assets/admin/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet">
+    <!-- toast CSS -->
+    <link href="assets/admin/bower_components/toast-master/css/jquery.toast.css" rel="stylesheet">
+    <!-- morris CSS -->
+    <link href="assets/admin/bower_components/morrisjs/morris.css" rel="stylesheet">
+    <!-- animation CSS -->
+    <link href="assets/admin/css/animate.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="assets/admin/css/utilisateur.css" rel="stylesheet">
 
-  <link href="assets/admin/css/style.css" rel="stylesheet">
+    <link href="assets/admin/css/style.css" rel="stylesheet">
 
-  <link href="assets/admin/css/checkbox.css" rel="stylesheet">
-  <!-- color CSS -->
-  <link href="assets/admin/css/colors/blue-dark.css" rel="stylesheet">
+    <link href="assets/admin/css/checkbox.css" rel="stylesheet">
+    <!-- color CSS -->
+    <link href="assets/admin/css/colors/blue-dark.css" rel="stylesheet">
 
-  <link rel="stylesheet" type="text/css" href="assets/css/ol4.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/ol4.css">
 
-  <link rel="stylesheet" type="text/css" href="assets/admin/css/angular-color-picker.css ">
-  <link rel="stylesheet" type="text/css" href="assets/admin/css/angular-color-picker1.css">
-  <link rel="stylesheet" type="text/css" href="assets/css/textAngular.css">
+    <link rel="stylesheet" type="text/css" href="assets/admin/css/angular-color-picker.css ">
+    <link rel="stylesheet" type="text/css" href="assets/admin/css/angular-color-picker1.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/textAngular.css">
 </head>
 
 <body ng-app="monapp">
 
-  <div ng-controller="mainCtrl">
-    <div ng-view></div>
-  </div>
-  <footer class="footer text-center" style="left: 0px !important;"> GeoOSM, Developed by TANK & Anas</footer>
+    <div ng-controller="mainCtrl">
+        <div ng-view></div>
+    </div>
+    <footer class="footer text-center" style="left: 0px !important;"> GeOsm Backend</footer>
 </body>
 
 <script type="text/javascript" src="assets/config.js?ver=1.1"></script>
@@ -90,78 +91,79 @@
 
 
 <script>
-  $('[data-toggle=confirmation]').confirmation({
-    rootSelector: '[data-toggle=confirmation]',
-    container: 'body'
-  });
-  $('[data-toggle=confirmation-singleton]').confirmation({
-    rootSelector: '[data-toggle=confirmation-singleton]',
-    container: 'body'
-  });
-  $('[data-toggle=confirmation-popout]').confirmation({
-    rootSelector: '[data-toggle=confirmation-popout]',
-    container: 'body'
-  });
+    $('[data-toggle=confirmation]').confirmation({
+        rootSelector: '[data-toggle=confirmation]',
+        container: 'body'
+    });
+    $('[data-toggle=confirmation-singleton]').confirmation({
+        rootSelector: '[data-toggle=confirmation-singleton]',
+        container: 'body'
+    });
+    $('[data-toggle=confirmation-popout]').confirmation({
+        rootSelector: '[data-toggle=confirmation-popout]',
+        container: 'body'
+    });
 
-  $('#confirmation-delegate').confirmation({
-    selector: 'button'
-  });
+    $('#confirmation-delegate').confirmation({
+        selector: 'button'
+    });
 
-  var currency = '';
-  $('#custom-confirmation').confirmation({
-    rootSelector: '#custom-confirmation',
-    container: 'body',
-    title: null,
-    onConfirm: function(currency) {
-      alert('You choosed ' + currency);
-    },
-    buttons: [{
-        class: 'btn btn-danger',
-        icon: 'glyphicon glyphicon-usd',
-        value: 'US Dollar'
-      },
-      {
-        class: 'btn btn-primary',
-        icon: 'glyphicon glyphicon-euro',
-        value: 'Euro'
-      },
-      {
-        class: 'btn btn-warning',
-        icon: 'glyphicon glyphicon-bitcoin',
-        value: 'Bitcoin'
-      },
-      {
-        class: 'btn btn-default',
-        icon: 'glyphicon glyphicon-remove',
-        cancel: true
-      }
-    ]
-  });
+    var currency = '';
+    $('#custom-confirmation').confirmation({
+        rootSelector: '#custom-confirmation',
+        container: 'body',
+        title: null,
+        onConfirm: function(currency) {
+            alert('You choosed ' + currency);
+        },
+        buttons: [{
+                class: 'btn btn-danger',
+                icon: 'glyphicon glyphicon-usd',
+                value: 'US Dollar'
+            },
+            {
+                class: 'btn btn-primary',
+                icon: 'glyphicon glyphicon-euro',
+                value: 'Euro'
+            },
+            {
+                class: 'btn btn-warning',
+                icon: 'glyphicon glyphicon-bitcoin',
+                value: 'Bitcoin'
+            },
+            {
+                class: 'btn btn-default',
+                icon: 'glyphicon glyphicon-remove',
+                cancel: true
+            }
+        ]
+    });
 
-  $('#custom-confirmation-links').confirmation({
-    rootSelector: '#custom-confirmation-link',
-    container: 'body',
-    title: null,
-    buttons: [{
-        label: 'Twitter',
-        attr: {
-          href: 'https://twitter.com'
-        }
-      },
-      {
-        label: 'Facebook',
-        attr: {
-          href: 'https://facebook.com'
-        }
-      },
-      {
-        label: 'Pinterest',
-        attr: {
-          href: 'https://pinterest.com'
-        }
-      }
-    ]
-  });
+    $('#custom-confirmation-links').confirmation({
+        rootSelector: '#custom-confirmation-link',
+        container: 'body',
+        title: null,
+        buttons: [{
+                label: 'Twitter',
+                attr: {
+                    href: 'https://twitter.com'
+                }
+            },
+            {
+                label: 'Facebook',
+                attr: {
+                    href: 'https://facebook.com'
+                }
+            },
+            {
+                label: 'Pinterest',
+                attr: {
+                    href: 'https://pinterest.com'
+                }
+            }
+        ]
+    });
+
 </script>
 
 </html>
