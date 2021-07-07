@@ -7,7 +7,7 @@ use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class geoportailController extends Controller
+class GeoportailController extends Controller
 {
 
     private $id_instance_gc = 1;

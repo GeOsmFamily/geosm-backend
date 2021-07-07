@@ -5,7 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Http\Controllers\thematiqueController;
 
-class refreshDB extends Command
+class RefreshDB extends Command
 {
     /**
      * The name and signature of the console command.
@@ -42,6 +42,5 @@ class refreshDB extends Command
         $thematique_controler = new thematiqueController();
         $thematique_controler->genrateAutomaticJsonFileByCat();
         $this->info('Recalcul des count, surfaces, longueur, terminé');
-        //genrateAutomaticJsonFileByCat
     }
 }

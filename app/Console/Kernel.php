@@ -16,8 +16,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        refreshDB::class,
-        createAllTablesOSM::class
+        RefreshDB::class,
+        CreateAllTablesOSM::class
     ];
 
     /**

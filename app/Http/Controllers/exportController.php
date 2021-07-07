@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\thematiqueController;
 use Illuminate\Support\Facades\DB;
 
-class exportController extends Controller
+class ExportController extends Controller
 {
     public function exportDataOsm(Request $request)
     {

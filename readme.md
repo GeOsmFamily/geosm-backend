@@ -80,7 +80,7 @@ La base de données étant prête, on peut passer au projet PHP
 
 ##### 1. Déploiement du projet:
 
-[Documentation officielle ici](https://laravel.com/docs/7.x)
+[Documentation officielle ici](https://laravel.com/docs/8.x)
 
 ```sh
 

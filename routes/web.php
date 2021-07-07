@@ -13,59 +13,59 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('loginAdmin', ['as' => 'loginAdmin', 'uses' => 'loginController@loginAdmin']);
+Route::post('loginAdmin', ['as' => 'loginAdmin', 'uses' => 'LoginController@loginAdmin']);
 
-// Route::get('/','geoportailController@index');
-Route::get('/getParamsForSeo', 'geoportailController@getParamsForSeo');
+// Route::get('/','GeoportailController@index');
+Route::get('/getParamsForSeo', 'GeoportailController@getParamsForSeo');
 
-Route::get('/check', 'geoportailController@checkaccount');
+Route::get('/check', 'GeoportailController@checkaccount');
 
-Route::get('deconnect', 'loginController@deconnect');
+Route::get('deconnect', 'LoginController@deconnect');
 
 
 Route::get('/', function () {
     return view('admin');
 });
 
-Route::get('config_bd_projet', 'adminController@config_bd_projet');
+Route::get('config_bd_projet', 'AdminController@config_bd_projet');
 
 /*-------------------geoportail---------------------*/
 /*-------------------------------------------------------------------*/
-Route::post('login', ['as' => 'login', 'uses' => 'loginController@checklogin']);
+Route::post('login', ['as' => 'login', 'uses' => 'LoginController@checklogin']);
 
-Route::post('updateAttribute', ['as' => 'updateAttribute', 'uses' => 'geoportailController@updateAttribute']);
+Route::post('updateAttribute', ['as' => 'updateAttribute', 'uses' => 'GeoportailController@updateAttribute']);
 
-// Route::post('addEntite', ['as' => 'addEntite', 'uses' => 'geoportailController@addEntite']);
+// Route::post('addEntite', ['as' => 'addEntite', 'uses' => 'GeoportailController@addEntite']);
 
-Route::post('deleteEntite', ['as' => 'deleteEntite', 'uses' => 'geoportailController@deleteEntite']);
+Route::post('deleteEntite', ['as' => 'deleteEntite', 'uses' => 'GeoportailController@deleteEntite']);
 
-Route::post('updateEntite', ['as' => 'updateEntite', 'uses' => 'geoportailController@updateEntite']);
+Route::post('updateEntite', ['as' => 'updateEntite', 'uses' => 'GeoportailController@updateEntite']);
 
-Route::post('share', ['as' => 'share', 'uses' => 'geoportailController@share']);
-
-
+Route::post('share', ['as' => 'share', 'uses' => 'GeoportailController@share']);
 
 
-Route::post('getLimite', 'geoportailController@getLimite');
-Route::post('getListLimit', 'geoportailController@getListLimit');
-Route::post('getLimitById', 'geoportailController@getLimitById');
-
-Route::post('searchCouche', 'geoportailController@searchCouche');
-Route::post('searchLimite', 'geoportailController@searchLimite');
-Route::post('searchLimiteInTable', 'geoportailController@searchLimiteInTable');
-Route::post('getLimiteById', 'geoportailController@getLimiteById');
-Route::get('getZoneInteret', 'geoportailController@getZoneInteret');
 
 
-Route::post('add_limite_administrative', 'adminController@add_limite_administrative');
-Route::post('delete_limite_administrative', 'adminController@delete_limite_administrative');
-Route::get('config_bd_projet', 'adminController@config_bd_projet');
+Route::post('getLimite', 'GeoportailController@getLimite');
+Route::post('getListLimit', 'GeoportailController@getListLimit');
+Route::post('getLimitById', 'GeoportailController@getLimitById');
+
+Route::post('searchCouche', 'GeoportailController@searchCouche');
+Route::post('searchLimite', 'GeoportailController@searchLimite');
+Route::post('searchLimiteInTable', 'GeoportailController@searchLimiteInTable');
+Route::post('getLimiteById', 'GeoportailController@getLimiteById');
+Route::get('getZoneInteret', 'GeoportailController@getZoneInteret');
 
 
-Route::post('whriteSvg', 'adminController@whriteSvg');
-Route::post('whriteMultipleSvg', 'adminController@whriteMultipleSvg');
+Route::post('add_limite_administrative', 'AdminController@add_limite_administrative');
+Route::post('delete_limite_administrative', 'AdminController@delete_limite_administrative');
+Route::get('config_bd_projet', 'AdminController@config_bd_projet');
 
-Route::post('addEntite', 'geoportailController@addEntite');
+
+Route::post('whriteSvg', 'AdminController@whriteSvg');
+Route::post('whriteMultipleSvg', 'AdminController@whriteMultipleSvg');
+
+Route::post('addEntite', 'GeoportailController@addEntite');
 
 
 
@@ -85,128 +85,128 @@ $api->version('v1', function ($api) {
 
     $api->get('v1/RestFull/LayerNameEdit/{id}', 'App\Http\Controllers\ApiController@LayerNameEdit');
 
-    $api->get('v1/RestFull/getUsers/', 'App\Http\Controllers\adminController@users');
+    $api->get('v1/RestFull/getUsers/', 'App\Http\Controllers\AdminController@users');
 
-    $api->get('v1/RestFull/catalogAdmin/', 'App\Http\Controllers\adminController@DataCatalog');
+    $api->get('v1/RestFull/catalogAdmin/', 'App\Http\Controllers\AdminController@DataCatalog');
 
-    $api->get('v1/RestFull/catalogAdminCartes/', 'App\Http\Controllers\adminController@DataCatalogCartes');
+    $api->get('v1/RestFull/catalogAdminCartes/', 'App\Http\Controllers\AdminController@DataCatalogCartes');
 
     $api->get('v1/RestFull/column_name/{shema}/{table}', 'App\Http\Controllers\ApiController@column_name');
 });
 
 Route::group(['prefix' => '/user'], function () {
 
-    Route::post('add/', 'userController@add');
+    Route::post('add/', 'UserController@add');
 
-    Route::post('updateUser/', 'userController@updateUser');
+    Route::post('updateUser/', 'UserController@updateUser');
 
-    Route::post('deleteUser/', 'userController@deleteUser');
+    Route::post('deleteUser/', 'UserController@deleteUser');
 
-    Route::post('addRolesUser/', 'userController@addRolesUser');
+    Route::post('addRolesUser/', 'UserController@addRolesUser');
 
-    Route::post('deleteRole/', 'userController@deleteRole');
+    Route::post('deleteRole/', 'UserController@deleteRole');
 
-    Route::post('uploads/', 'userController@uploads');
+    Route::post('uploads/', 'UserController@uploads');
 });
 
 
 Route::group(['prefix' => '/thematique'], function () {
 
-    Route::get('getCatalogueDonne/', 'thematiqueController@getCatalogueDonne');
+    Route::get('getCatalogueDonne/', 'ThematiqueController@getCatalogueDonne');
 
 
 
 
-    Route::post('changeLayerSousThematique/', 'thematiqueController@changeLayerSousThematique');
+    Route::post('changeLayerSousThematique/', 'ThematiqueController@changeLayerSousThematique');
 
-    Route::post('updateThematique/', 'thematiqueController@updateThematique');
-    Route::post('updateOrdreThematique/', 'thematiqueController@updateOrdreThematique');
-
-
-    Route::post('addThematique/', 'thematiqueController@addThematique');
-
-    Route::post('deleteThematique/', 'thematiqueController@deleteThematique');
+    Route::post('updateThematique/', 'ThematiqueController@updateThematique');
+    Route::post('updateOrdreThematique/', 'ThematiqueController@updateOrdreThematique');
 
 
+    Route::post('addThematique/', 'ThematiqueController@addThematique');
 
-    Route::post('addSousThematique/', 'thematiqueController@addSousThematique');
-
-    Route::post('updateSousThematique/', 'thematiqueController@updateSousThematique');
-
-    Route::post('deleteSousThematique/', 'thematiqueController@deleteSousThematique');
+    Route::post('deleteThematique/', 'ThematiqueController@deleteThematique');
 
 
 
-    Route::post('addCouche/', 'thematiqueController@addCouche');
+    Route::post('addSousThematique/', 'ThematiqueController@addSousThematique');
 
-    Route::post('deleteCouche/', 'thematiqueController@deleteCouche');
+    Route::post('updateSousThematique/', 'ThematiqueController@updateSousThematique');
 
-    Route::post('change_nameCouche/', 'thematiqueController@change_nameCouche');
-
-    Route::post('save_logo/', 'thematiqueController@save_logo');
+    Route::post('deleteSousThematique/', 'ThematiqueController@deleteSousThematique');
 
 
 
+    Route::post('addCouche/', 'ThematiqueController@addCouche');
 
-    Route::post('addColumns/', 'thematiqueController@addColumns');
+    Route::post('deleteCouche/', 'ThematiqueController@deleteCouche');
 
-    Route::post('deleteColumn/', 'thematiqueController@deleteColumn');
+    Route::post('change_nameCouche/', 'ThematiqueController@change_nameCouche');
 
-    Route::post('updateColumn/', 'thematiqueController@updateColumn');
-
-    Route::post('definir_champ_principal/', 'thematiqueController@definir_champ_principal');
-
-
-    Route::post('queryLimite/', 'thematiqueController@queryLimite');
+    Route::post('save_logo/', 'ThematiqueController@save_logo');
 
 
-    Route::post('emptyTable/', 'thematiqueController@emptyTable');
-    Route::post('importationDeDonnes/', 'thematiqueController@importationDeDonnes');
-
-    Route::post('save_properties_couche_wms/', 'thematiqueController@save_properties_couche_wms');
-    Route::post('define_service/', 'thematiqueController@define_service');
-
-    Route::post('save_properties_couche_api/', 'thematiqueController@save_properties_couche_api');
-
-    Route::post('save_properties_couche_osm/', 'thematiqueController@save_properties_couche_osm');
-    Route::post('save_properties_couche_sql_complete_osm/', 'thematiqueController@save_properties_couche_sql_complete_osm');
-    Route::post('save_select_clause/', 'thematiqueController@save_select_clause');
 
 
-    Route::post('delete_cles_vals_osm/', 'thematiqueController@delete_cles_vals_osm');
+    Route::post('addColumns/', 'ThematiqueController@addColumns');
 
-    Route::post('querryOsm/', 'thematiqueController@querryOsm');
+    Route::post('deleteColumn/', 'ThematiqueController@deleteColumn');
 
-    Route::post('chooseTypeWms/', 'thematiqueController@chooseTypeWms');
+    Route::post('updateColumn/', 'ThematiqueController@updateColumn');
 
-    Route::post('genrateJsonFileByCat/', 'thematiqueController@genrateJsonFileByCat');
+    Route::post('definir_champ_principal/', 'ThematiqueController@definir_champ_principal');
 
-    Route::get('genrateAutomaticJsonFileByCat/', 'thematiqueController@genrateAutomaticJsonFileByCat');
 
-    Route::post('addMetadata/', 'thematiqueController@addMetadata');
+    Route::post('queryLimite/', 'ThematiqueController@queryLimite');
 
-    Route::post('editMetadata/', 'thematiqueController@editMetadata');
 
-    Route::post('donwload/', 'exportController@exportDataOsm');
+    Route::post('emptyTable/', 'ThematiqueController@emptyTable');
+    Route::post('importationDeDonnes/', 'ThematiqueController@importationDeDonnes');
+
+    Route::post('save_properties_couche_wms/', 'ThematiqueController@save_properties_couche_wms');
+    Route::post('define_service/', 'ThematiqueController@define_service');
+
+    Route::post('save_properties_couche_api/', 'ThematiqueController@save_properties_couche_api');
+
+    Route::post('save_properties_couche_osm/', 'ThematiqueController@save_properties_couche_osm');
+    Route::post('save_properties_couche_sql_complete_osm/', 'ThematiqueController@save_properties_couche_sql_complete_osm');
+    Route::post('save_select_clause/', 'ThematiqueController@save_select_clause');
+
+
+    Route::post('delete_cles_vals_osm/', 'ThematiqueController@delete_cles_vals_osm');
+
+    Route::post('querryOsm/', 'ThematiqueController@querryOsm');
+
+    Route::post('chooseTypeWms/', 'ThematiqueController@chooseTypeWms');
+
+    Route::post('genrateJsonFileByCat/', 'ThematiqueController@genrateJsonFileByCat');
+
+    Route::get('genrateAutomaticJsonFileByCat/', 'ThematiqueController@genrateAutomaticJsonFileByCat');
+
+    Route::post('addMetadata/', 'ThematiqueController@addMetadata');
+
+    Route::post('editMetadata/', 'ThematiqueController@editMetadata');
+
+    Route::post('donwload/', 'ExportController@exportDataOsm');
 });
 
 Route::group(['prefix' => '/adressage'], function () {
 
-    Route::post('getAdresse/', 'adressageController@getAdresse');
+    Route::post('getAdresse/', 'AdressageController@getAdresse');
 
-    Route::post('getPosition/', 'adressageController@getPosition');
+    Route::post('getPosition/', 'AdressageController@getPosition');
 
-    Route::post('getPoints/', 'adressageController@getPoints');
-
-
-    Route::get('codeUsage/', 'adressageController@codeUsage');
-
-    Route::post('getData/', 'adressageController@getData');
-
-    Route::post('getElastcData/', 'adressageController@getElastcData');
+    Route::post('getPoints/', 'AdressageController@getPoints');
 
 
-    Route::post('getAdresse_on_click/', 'adressageController@getAdresse_on_click');
+    Route::get('codeUsage/', 'AdressageController@codeUsage');
+
+    Route::post('getData/', 'AdressageController@getData');
+
+    Route::post('getElastcData/', 'AdressageController@getElastcData');
+
+
+    Route::post('getAdresse_on_click/', 'AdressageController@getAdresse_on_click');
 });
 
 
@@ -216,65 +216,65 @@ Route::post("upload/file", "FilesController@upload");
 
 Route::post("uploads/file", "FilesController@uploads");
 
-Route::get('/geoportail/getCatalogue', 'adminController@DataCatalog');
-// Route::get('/geoportail/getCatalogue', 'geoportailController@getCatalogue');
+Route::get('/geoportail/getCatalogue', 'AdminController@DataCatalog');
+// Route::get('/geoportail/getCatalogue', 'GeoportailController@getCatalogue');
 
-Route::post('/geoportail/saveDraw', 'geoportailController@saveDraw');
-Route::post('/geoportail/getDraw', 'geoportailController@getDraw');
-Route::post('/geoportail/drapeline', 'geoportailController@drapeline');
-Route::post('/geoportail/getAlti', 'geoportailController@getAlti');
-Route::post('/geoportail/getUsers', 'geoportailController@getUsers');
+Route::post('/geoportail/saveDraw', 'GeoportailController@saveDraw');
+Route::post('/geoportail/getDraw', 'GeoportailController@getDraw');
+Route::post('/geoportail/drapeline', 'GeoportailController@drapeline');
+Route::post('/geoportail/getAlti', 'GeoportailController@getAlti');
+Route::post('/geoportail/getUsers', 'GeoportailController@getUsers');
 
-Route::post('/geoportail/getJsonFIle', 'geoportailController@getJsonFIle');
+Route::post('/geoportail/getJsonFIle', 'GeoportailController@getJsonFIle');
 
-Route::post('/geoportail/addCountVieuwData', 'geoportailController@addCountVieuwData');
-Route::post('/analytics', 'geoportailController@analytics');
-Route::get('/geoportail/getVisitiors', 'geoportailController@getVisitiors');
-Route::post('/geoportail/getFeatureFromLayerById', 'geoportailController@getFeatureFromLayerById');
+Route::post('/geoportail/addCountVieuwData', 'GeoportailController@addCountVieuwData');
+Route::post('/analytics', 'GeoportailController@analytics');
+Route::get('/geoportail/getVisitiors', 'GeoportailController@getVisitiors');
+Route::post('/geoportail/getFeatureFromLayerById', 'GeoportailController@getFeatureFromLayerById');
 
-Route::get('/geoportail/getAllExtents', 'adminController@getAllExtents');
+Route::get('/geoportail/getAllExtents', 'AdminController@getAllExtents');
 
 Route::group(['prefix' => '/cartes'], function () {
 
 
-    Route::post('addGroupeCartes/', 'cartesController@addGroupeCartes');
+    Route::post('addGroupeCartes/', 'CartesController@addGroupeCartes');
 
-    Route::post('updateGroupeCartes/', 'cartesController@updateGroupeCartes');
+    Route::post('updateGroupeCartes/', 'CartesController@updateGroupeCartes');
 
-    Route::post('deleteCartes/', 'cartesController@deleteCartes');
-
-
-    Route::post('updateSousCartes/', 'cartesController@updateSousCartes');
-
-    Route::post('deleteSousCartes/', 'cartesController@deleteSousCartes');
-
-    Route::post('addCoucheCartes/', 'cartesController@addCoucheCartes');
-
-    Route::post('addSousGroupeCartes/', 'cartesController@addSousGroupeCartes');
-
-    Route::post('change_nameCoucheCartes/', 'cartesController@change_nameCoucheCartes');
-
-    Route::post('saveCommentCartes/', 'cartesController@saveCommentCartes');
-
-    Route::post('deleteCoucheCartes/', 'cartesController@deleteCoucheCartes');
-
-    Route::post('editCoucheCartes/', 'cartesController@editCoucheCartes');
-
-    Route::post('addSequence/', 'cartesController@addSequence');
-
-    Route::post('deleteSequence/', 'cartesController@deleteSequence');
-
-    Route::post('setPrincipalCartes/', 'cartesController@setPrincipalCartes');
-
-    Route::post('add_doc_pdf/', 'cartesController@add_doc_pdf');
-
-    Route::post('updatePdfcarte/', 'cartesController@updatePdfcarte');
+    Route::post('deleteCartes/', 'CartesController@deleteCartes');
 
 
-    Route::post('delete_doc_pdf/', 'cartesController@delete_doc_pdf');
+    Route::post('updateSousCartes/', 'CartesController@updateSousCartes');
 
-    Route::post('SaveCoordPdf/', 'cartesController@SaveCoordPdf');
+    Route::post('deleteSousCartes/', 'CartesController@deleteSousCartes');
 
-    Route::post('addMetadata/', 'cartesController@addMetadata');
-    Route::post('editMetadata/', 'cartesController@editMetadata');
+    Route::post('addCoucheCartes/', 'CartesController@addCoucheCartes');
+
+    Route::post('addSousGroupeCartes/', 'CartesController@addSousGroupeCartes');
+
+    Route::post('change_nameCoucheCartes/', 'CartesController@change_nameCoucheCartes');
+
+    Route::post('saveCommentCartes/', 'CartesController@saveCommentCartes');
+
+    Route::post('deleteCoucheCartes/', 'CartesController@deleteCoucheCartes');
+
+    Route::post('editCoucheCartes/', 'CartesController@editCoucheCartes');
+
+    Route::post('addSequence/', 'CartesController@addSequence');
+
+    Route::post('deleteSequence/', 'CartesController@deleteSequence');
+
+    Route::post('setPrincipalCartes/', 'CartesController@setPrincipalCartes');
+
+    Route::post('add_doc_pdf/', 'CartesController@add_doc_pdf');
+
+    Route::post('updatePdfcarte/', 'CartesController@updatePdfcarte');
+
+
+    Route::post('delete_doc_pdf/', 'CartesController@delete_doc_pdf');
+
+    Route::post('SaveCoordPdf/', 'CartesController@SaveCoordPdf');
+
+    Route::post('addMetadata/', 'CartesController@addMetadata');
+    Route::post('editMetadata/', 'CartesController@editMetadata');
 });

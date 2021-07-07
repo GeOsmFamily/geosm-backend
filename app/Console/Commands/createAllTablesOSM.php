@@ -6,7 +6,7 @@ use Illuminate\Console\Command;
 use App\Http\Controllers\thematiqueController;
 use Illuminate\Support\Facades\DB;
 
-class createAllTablesOSM extends Command
+class CreateAllTablesOSM extends Command
 {
     public $id_instance_gc = 1;
     /**

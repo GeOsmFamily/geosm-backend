@@ -6,7 +6,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class adressageController extends Controller
+class AdressageController extends Controller
 {
 
 

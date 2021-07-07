@@ -11,7 +11,7 @@ use Validator;
 
 
 
-class userController extends Controller
+class UserController extends Controller
 {
 
     private $id_instance_gc = 1;

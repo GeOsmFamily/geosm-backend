@@ -46,7 +46,7 @@
     <div ng-controller="mainCtrl">
         <div ng-view></div>
     </div>
-    <footer class="footer text-center" style="left: 0px !important;"> GeOsm Backend</footer>
+    <footer class="footer text-center" style="left: 0px !important;"> Powered By GeOsm</footer>
 </body>
 
 <script type="text/javascript" src="assets/config.js?ver=1.1"></script>
@@ -163,7 +163,6 @@
             }
         ]
     });
-
 </script>
 
 </html>

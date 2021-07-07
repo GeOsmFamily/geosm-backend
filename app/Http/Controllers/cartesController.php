@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class cartesController extends Controller
+class CartesController extends Controller
 {
     private $id_instance_gc = 1;
 

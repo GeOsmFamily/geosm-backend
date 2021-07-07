@@ -6,7 +6,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class newinstancesController extends Controller
+class NewinstancesController extends Controller
 {
 
 

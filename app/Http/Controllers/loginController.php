@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 
-class loginController extends Controller
+class LoginController extends Controller
 {
 
     public function checklogin(Request $request)
