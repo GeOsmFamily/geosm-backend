@@ -480,6 +480,46 @@ class GeoportailController extends Controller
         }
     }
 
+    public function getEntite()
+    {
+
+        $querry =    DB::select('select * from comments');
+
+        for ($i = 0; $i < count($querry); $i++) {
+            $result[] = $querry[$i];
+            $id = (string)$querry[$i]->id;
+            $lonlat = DB::select("SELECT ST_AsText(geom) FROM comments where id=$id;");
+
+            $response1 =  response()->json($lonlat);
+            $content1 = $response1->getContent();
+            $array1 = json_decode($content1, true);
+            $final =  str_replace('MULTIPOINT(', '', $array1[0]['st_astext']);
+            $finalTrue = str_replace(')', '', $final);
+
+            $coord = explode(' ', $finalTrue);
+            $lon = (float)$coord[0];
+            $lat = (float)$coord[1];
+
+            $geometry = [
+                "type" => "Point",
+                "coordinates" => [$lon, $lat]
+            ];
+
+            $response[] = [
+                "type" => "Feature",
+                "geometry" => $geometry,
+                "properties" => $querry[$i]
+            ];
+        }
+
+        $geojson = [
+            "type" => "FeatureCollection",
+            "features" => $response
+        ];
+
+        return response()->json($geojson, 200);
+    }
+
 
     public function updateEntite(Request $request)
     {

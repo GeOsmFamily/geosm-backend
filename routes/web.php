@@ -67,6 +67,8 @@ Route::post('whriteMultipleSvg', 'AdminController@whriteMultipleSvg');
 
 Route::post('addEntite', 'GeoportailController@addEntite');
 
+Route::get('getEntite', 'GeoportailController@getEntite');
+
 
 
 //API RESTFUL
