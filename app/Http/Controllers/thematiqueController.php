@@ -1652,7 +1652,7 @@ class ThematiqueController extends Controller
             if (sizeof($key_val_osm) > 0) {
                 try {
                     try {
-                        $responseSql = $this->genrateSqlForLayer($id_cat, 'instances_gc', $this->id_instance_gc, 'geom', env('intersection'), false);
+                        $responseSql = $this->genrateSqlForLayer($id_cat, 'instances_gc', $this->id_instance_gc, 'geom', env('intersection'), true);
                     } catch (\Throwable $th) {
                         // throw $th;
 
