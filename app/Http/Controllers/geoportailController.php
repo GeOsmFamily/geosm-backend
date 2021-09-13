@@ -1388,4 +1388,21 @@ class GeoportailController extends Controller
             print_r(json_decode($response->getBody(), true));
         }
     }
+
+    public function getCountry(Request $request)
+    {
+
+        $ip = $request->input("ip", null);
+
+        $details = json_decode(file_get_contents("http://www.geoplugin.net/json.gp?ip=$ip"), true);
+
+        $country = $details["geoplugin_countryName"];
+
+        $response = [
+            'success' => true,
+            'country'    => $country,
+        ];
+
+        return response()->json($response, 200);
+    }
 }

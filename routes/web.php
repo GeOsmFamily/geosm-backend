@@ -231,6 +231,7 @@ Route::post('/geoportail/getJsonFIle', 'GeoportailController@getJsonFIle');
 
 Route::post('/geoportail/addCountVieuwData', 'GeoportailController@addCountVieuwData');
 Route::post('/analytics', 'GeoportailController@analytics');
+Route::post('/getcountry', 'GeoportailController@getCountry');
 Route::get('/geoportail/getVisitiors', 'GeoportailController@getVisitiors');
 Route::post('/geoportail/getFeatureFromLayerById', 'GeoportailController@getFeatureFromLayerById');
 
