@@ -1643,7 +1643,7 @@ class ThematiqueController extends Controller
 
         $categories = DB::table("categorie")->select("id_cat", "nom_cat", "type_couche")->get();
 
-        foreach ($categories as $categorie) {
+        foreach ($categories as $key => $categorie) {
 
             $id_cat = $categorie->id_cat;
 
@@ -1678,6 +1678,9 @@ class ThematiqueController extends Controller
                     //throw $th;
                 }
             }
+
+            // echo $categorie->nom_cat . "\n";
+            echo $key . "/" . count($categories) . "\n";
         }
 
         $re['status'] = 'ok';
