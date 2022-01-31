@@ -1680,7 +1680,7 @@ class ThematiqueController extends Controller
             }
 
             // echo $categorie->nom_cat . "\n";
-            echo $key . "/" . count($categories) . "\n";
+            echo $categorie->nom_cat . " " . $key . "/" . count($categories) . "\n";
         }
 
         $re['status'] = 'ok';
